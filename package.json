@@ -1,0 +1,25 @@
+{
+  "name": "spc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "prettier": "^3.5.3"
+  },
+  "prettier": {},
+  "dependencies": {
+    "esbuild": "^0.25.4",
+    "handlebars": "^4.7.8",
+    "leaflet": "^1.9.4"
+  }
+}
