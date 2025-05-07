@@ -21,7 +21,23 @@ const main = async () => {
 
   for await (const day of Object.keys(data)) {
     const types = Object.keys(data[day]);
-    const rendered = template({ outlookDay: day, types, data: data[day] });
+
+    const prev =
+      +day > 1 ? { name: `day ${+day - 1}`, url: `day${+day - 1}.html` } : null;
+    const next =
+      +day < 3 ? { name: `day ${+day + 1}`, url: `day${+day + 1}.html` } : null;
+
+    if (prev?.name === "day 1") {
+      prev.url = "index.html";
+    }
+
+    const rendered = template({
+      outlookDay: day,
+      types,
+      data: data[day],
+      prev,
+      next,
+    });
     await fs.writeFile(
       `docs/${day === "1" ? "index" : `day${day}`}.html`,
       rendered,
