@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p docs && node src/index.js"
+    "build": "mkdir -p docs && node src/main.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +14,12 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import": "^2.31.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.87.0"
   },
   "prettier": {},
   "dependencies": {
+    "dayjs": "^1.11.13",
     "esbuild": "^0.25.4",
     "handlebars": "^4.7.8",
     "leaflet": "^1.9.4"

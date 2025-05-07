@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { build } from "esbuild";
+import * as sass from "sass-embedded";
 import handlebars from "handlebars";
 
 const main = async () => {
@@ -28,12 +29,17 @@ const main = async () => {
   }
 
   await build({
-    entryPoints: [path.join(import.meta.dirname, "main.js")],
+    entryPoints: [path.join(import.meta.dirname, "js", "main.js")],
     bundle: true,
     format: "esm",
     minify: true,
     outdir: "docs",
   });
+
+  const { css } = sass.compile(
+    path.join(import.meta.dirname, "scss", "main.scss"),
+  );
+  await fs.writeFile("docs/main.css", css);
 };
 
 if (process.argv[1] === import.meta.filename) {

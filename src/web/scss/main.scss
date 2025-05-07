@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 1rem 0;
+  small {
+    display: block;
+    font-size: 0.5em;
+    font-weight: 200;
+  }
+}
+
+tab-controller {
+  button {
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: #def;
+    cursor: pointer;
+    border: 1px solid #8ac;
+
+    &[active] {
+      background: #acf;
+      border: 1px solid #58a;
+    }
+  }
+
+  tab-container {
+    display: block;
+    height: 80vh;
+
+    risk-map {
+      display: block;
+      height: 100%;
+    }
+  }
+}

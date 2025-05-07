@@ -5,7 +5,7 @@ export default () => {
   const maps = document.querySelectorAll("risk-map");
   for (const map of maps) {
     map.id = window.crypto.randomUUID();
-    map.style.height = "500px";
+    // map.style.height = "500px";
     map.style.display = "block";
 
     const l = leaflet.map(map.id);

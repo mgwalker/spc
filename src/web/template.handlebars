@@ -4,9 +4,18 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
+     <link rel="stylesheet" href="main.css" />
     <title>SPC outlook | day {{ outlookDay }}</title>
   </head>
   <body>
+    <h1>Outlook for day {{ outlookDay }}
+    <small>
+      Forecast from
+      <time datetime="{{ data.thunderstorm.0.properties.valid }}">{{ data.thunderstorm.0.properties.valid }}</time>,
+      to
+      <time datetime="{{ data.thunderstorm.0.properties.expires }}">{{ data.thunderstorm.0.properties.expires }}</time>
+    </small>
+    </h1>
     <tab-controller>
       {{#each types}}
       <tab-container name="{{.}}">
