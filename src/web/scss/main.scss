@@ -19,23 +19,35 @@ h1 {
 }
 
 tab-controller {
+  [button-container] {
+    margin-bottom: -2px;
+  }
+
   button {
     padding: 1rem;
     border-radius: 0.5rem 0.5rem 0 0;
-    background-color: #def;
+    background-color: #efefff;
     cursor: pointer;
-    border: 1px solid #8ac;
+    border: 2px solid #8ac;
+    border-bottom-width: 0;
+
+    & + button {
+      margin-left: 0.5rem;
+    }
 
     &[active] {
       background: #acf;
-      border: 1px solid #58a;
+      background: white;
+      border: 2px solid #58a;
+      border-bottom: 0;
+      padding-bottom: calc(1rem + 2px);
     }
   }
 
   tab-container {
     display: block;
     height: 80vh;
-
+    border: 2px solid #58a;
     risk-map {
       display: block;
       height: 100%;

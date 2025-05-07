@@ -5,6 +5,7 @@ export default () => {
     const tabs = Array.from(controller.querySelectorAll("tab-container"));
 
     const buttonContainer = document.createElement("div");
+    buttonContainer.setAttribute("button-container", true);
     controller.insertBefore(buttonContainer, controller.firstChild);
 
     const buttons = [];
