@@ -3,6 +3,7 @@ import path from "node:path";
 import { build } from "esbuild";
 import * as sass from "sass-embedded";
 import handlebars from "handlebars";
+import "./renderBlock.js";
 
 const main = async () => {
   handlebars.registerHelper("json", (obj) =>
@@ -20,7 +21,7 @@ const main = async () => {
   const data = JSON.parse(await fs.readFile("./docs/outlook.json"));
 
   for await (const day of Object.keys(data)) {
-    const types = Object.keys(data[day]);
+    const types = Object.keys(data[day]).filter((t) => t != "discussion");
 
     const prev =
       +day > 1 ? { name: `day ${+day - 1}`, url: `day${+day - 1}.html` } : null;

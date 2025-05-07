@@ -60,3 +60,36 @@ tab-controller {
     }
   }
 }
+
+headline {
+  display: block;
+  font-weight: 600;
+  background-color: lightblue;
+  border: 1px solid gray;
+  padding: 1rem;
+  margin: 1rem 0;
+  line-height: 1.3rem;
+}
+
+discussion {
+  display: block;
+  margin: 2rem 0;
+
+  h1 {
+    margin: 2rem 0;
+  }
+
+  block {
+    display: block;
+    margin: 1.5rem 0;
+
+    hr {
+      margin: 1.5rem 0;
+    }
+
+    p {
+      line-height: 1.5rem;
+      margin: 1.5rem 0;
+    }
+  }
+}

@@ -1,11 +1,15 @@
-import { defineConfig } from "eslint/config";
+import globals from "globals";
 
-export default defineConfig([
+export default [
   {
+    files: ["src/**/*.js"],
     extends: ["airbnb-base", "prettier"],
     env: { es6: true, node: true },
     languageOptions: {
       ecmaVersion: "lates",
+      globals: {
+        ...globals.node,
+      },
     },
     rules: {
       "no-console": 0,
@@ -34,4 +38,4 @@ export default defineConfig([
       "prefer-destructuring": [0],
     },
   },
-]);
+];

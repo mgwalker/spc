@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import { days, getRisk } from "./metadata.js";
+import getDiscussion from "./getDiscussion.js";
 
 const fixupTimestamp = (ts) => {
   const [, year, month, day, hour, minute] = ts.match(
@@ -53,10 +54,14 @@ const main = async () => {
     data.features,
     (feature) => feature.properties.outlookDay,
   );
-  Object.entries(byDay).forEach(([key, day]) => {
-    const byType = Object.groupBy(day, (feature) => feature.properties.type);
-    byDay[key] = byType;
-  });
+  await Promise.all(
+    Object.entries(byDay).map(async ([key, day]) => {
+      const byType = Object.groupBy(day, (feature) => feature.properties.type);
+      byDay[key] = byType;
+
+      byDay[key].discussion = await getDiscussion(key);
+    }),
+  );
 
   await fs.writeFile("docs/outlook.geojson", JSON.stringify(data, null, 2));
   await fs.writeFile("docs/outlook.json", JSON.stringify(byDay, null, 2));
