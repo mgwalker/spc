@@ -52,11 +52,10 @@ tab-controller {
 
   tab-container {
     display: block;
-    height: 80vh;
     border: 2px solid #58a;
     risk-map {
       display: block;
-      height: 100%;
+      height: 80vh;
     }
   }
 }
@@ -90,6 +89,26 @@ discussion {
     p {
       line-height: 1.5rem;
       margin: 1.5rem 0;
+    }
+  }
+}
+
+map-legend {
+  display: flex;
+  border-top: 1px solid black;
+
+  legend-item {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+
+    div {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--legend-item-color);
+      border: 2px solid var(--legend-item-border-color);
+      margin-right: 0.5rem;
     }
   }
 }

@@ -18,6 +18,8 @@ export default () => {
       })
       .addTo(l);
 
+    const legendKeys = [];
+
     const layers = Array.from(map.querySelectorAll("map-layer")).map(
       (element) => {
         const layerData = JSON.parse(
@@ -25,15 +27,44 @@ export default () => {
         );
         element.removeAttribute("data");
 
-        const layer = leaflet.geoJSON(layerData, {
-          style: (feature) =>
-            getStyle(feature.properties.type, feature.properties.risk),
+        const style = getStyle(
+          layerData.properties.type,
+          layerData.properties.risk,
+        );
+
+        legendKeys.push({
+          style,
+          value: layerData.properties.risk,
         });
+
+        const layer = leaflet.geoJSON(layerData, { style });
         layer.addTo(l);
         return layer;
       },
     );
 
     l.fitBounds(leaflet.featureGroup(layers).getBounds(), { maxZoom: 5 });
+
+    const legend = map.parentElement.querySelector("map-legend");
+    if (legend) {
+      legendKeys.forEach(({ style, value }) => {
+        if (style && value) {
+          const item = document.createElement("legend-item");
+
+          const box = document.createElement("div");
+          box.setAttribute(
+            "style",
+            `--legend-item-color:${style.color}${Math.round(style.fillOpacity * 256).toString(16)};
+            --legend-item-border-color:${style.color}`,
+          );
+
+          item.appendChild(box);
+
+          item.appendChild(document.createTextNode(value));
+
+          legend.appendChild(item);
+        }
+      });
+    }
   }
 };

@@ -17,7 +17,7 @@ const fixupProperties = (feature, product) => {
     expires: fixupTimestamp(EXPIRE),
     issued: fixupTimestamp(ISSUE),
     type: product.name,
-    risk: getRisk(product.key, LABEL),
+    risk: getRisk(product.key, LABEL) ?? "",
   };
 };
 
