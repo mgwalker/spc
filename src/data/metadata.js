@@ -12,16 +12,8 @@ const products = [
     key: "hail",
   },
   {
-    name: "hail",
-    key: "sighail",
-  },
-  {
     name: "wind",
     key: "wind",
-  },
-  {
-    name: "wind",
-    key: "sigwind",
   },
 ];
 
@@ -51,15 +43,14 @@ const windLabelMappings = new Map([
   ["0.30", "30% risk"],
   ["0.45", "45% risk"],
   ["0.60", "60% risk"],
+  ["SIGN", "significant"],
 ]);
 
 const labelMappings = new Map([
   ["cat", stormLabelMappings],
   ["torn", tornadoLabelMappings],
   ["wind", windLabelMappings],
-  ["sigwind", new Map([["", "significant"]])],
   ["hail", windLabelMappings],
-  ["sighail", new Map([["", "significant"]])],
 ]);
 
 export const days = [[...products], [...products], [products[0]]];

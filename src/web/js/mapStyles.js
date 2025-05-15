@@ -25,7 +25,7 @@ const windStyles = new Map([
   ["30% risk", { color: "#FF0000", fillOpacity }],
   ["45% risk", { color: "#FF00FF", fillOpacity }],
   ["60% risk", { color: "#912CEE", fillOpacity }],
-  ["", { color: "black", fillOpacity }],
+  ["significant", { color: "black", fillOpacity }],
 ]);
 
 const styles = new Map([
