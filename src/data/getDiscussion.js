@@ -21,7 +21,7 @@ const main = async (day) => {
   content.map((block) => {
     // If the entire block is wrapped in triple dots, then it is the discussion
     // headline. Extract that accordingly.
-    if (/^\.\.\.[\s\S]+\.\.\.$/.test(block)) {
+    if (/^\.\.\.[\s\S]+\.\.\.$/.test(block) && !discussion.headline) {
       discussion.headline = block
         .replace(/^\.\.\./, "")
         .replace(/\.\.\.$/, "")
