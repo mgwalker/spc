@@ -9,6 +9,14 @@ body {
   margin: 0 auto;
 }
 
+in-visible {
+  position: absolute;
+  padding: 0;
+  margin: -1000px;
+  overflow: hidden;
+  border: 0;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -56,6 +64,10 @@ tab-controller {
     risk-map {
       display: block;
       height: 80vh;
+
+      svg path.hatched {
+        fill: url(#hatched);
+      }
     }
   }
 }
@@ -109,6 +121,10 @@ map-legend {
       background-color: var(--legend-item-color);
       border: 2px solid var(--legend-item-border-color);
       margin-right: 0.5rem;
+
+      &.hatched {
+        background: url(hatch.png);
+      }
     }
   }
 }

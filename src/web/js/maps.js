@@ -5,7 +5,6 @@ export default () => {
   const maps = document.querySelectorAll("risk-map");
   for (const map of maps) {
     map.id = window.crypto.randomUUID();
-    // map.style.height = "500px";
     map.style.display = "block";
 
     const l = leaflet.map(map.id);
@@ -57,6 +56,9 @@ export default () => {
             `--legend-item-color:${style.color}${Math.round(style.fillOpacity * 256).toString(16)};
             --legend-item-border-color:${style.color}`,
           );
+          if (style.className) {
+            box.classList.add(style.className);
+          }
 
           item.appendChild(box);
 

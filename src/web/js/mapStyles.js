@@ -35,4 +35,10 @@ const styles = new Map([
   ["hail", windStyles],
 ]);
 
-export const getStyle = (type, risk) => styles.get(type)?.get(risk);
+export const getStyle = (type, risk) => {
+  const style = styles.get(type)?.get(risk);
+  if (style && risk === "significant") {
+    style.className = "hatched";
+  }
+  return style;
+};

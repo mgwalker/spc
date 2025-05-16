@@ -45,6 +45,11 @@ const main = async () => {
     );
   }
 
+  await fs.copyFile(
+    path.join(import.meta.dirname, "hatch.png"),
+    "docs/hatch.png",
+  );
+
   await build({
     entryPoints: [path.join(import.meta.dirname, "js", "main.js")],
     bundle: true,
