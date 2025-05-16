@@ -28,8 +28,8 @@ const main = async (day) => {
         .replace(/\n/g, " ");
     }
     // If the block starts with triple dots, some text that is unbroken by a
-    // newline, and followed by a newline, we're starting a content block.
-    else if (/^\.\.\.[^\.]+\.\.\.\n/.test(block)) {
+    // newline, and triple dots again, we're starting a content block.
+    else if (/^\.\.\.[^\.\n]+\.\.\./.test(block)) {
       const parts = block.split("\n");
 
       // The first line is the block heading. It begins with triple dots, so
@@ -43,6 +43,15 @@ const main = async (day) => {
         type: "block",
         heading,
         content: [content],
+      });
+    }
+    // If the block is completely contained within triple dots but DOES have
+    // newlines in it, then this is a content-less heading.
+    else if (/^\.\.\.[^\.]+\.\.\./i.test(block)) {
+      discussion.blocks.push({
+        type: "block",
+        heading: block.replace(/\n/g, " ").replace(/\.\.\./g, ""),
+        content: [],
       });
     }
     // If the block begins with two dots, then it is author information
@@ -89,7 +98,7 @@ const main = async (day) => {
 };
 
 if (process.argv[1] === import.meta.filename) {
-  main().then(console.log);
+  main(process.argv[2]);
 }
 
 export default main;

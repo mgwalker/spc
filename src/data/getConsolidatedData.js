@@ -39,7 +39,10 @@ const main = async () => {
               feature.geometry.coordinates?.length > 0 ||
               feature.geometry.geometries?.length > 0,
           ),
-        }));
+        }))
+        .catch((e) => {
+          console.log(e);
+        });
 
       productData.features.forEach((feature) => {
         feature.properties = fixupProperties(feature, product);
