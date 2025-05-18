@@ -14,6 +14,10 @@ handlebars.registerHelper("block", (obj) => {
       return new handlebars.SafeString(
         `<hr/><h3>Repeating previous discussion, issued ${obj.content}</h3>`,
       );
+    case "paragraph": {
+      const text = obj.content.map((t) => `<p>${t}</p>`).join("");
+      return new handlebars.SafeString(`<p>${text}</p>`);
+    }
 
     default:
       console.log(`No idea what to do with ${obj.type}`);

@@ -1,3 +1,5 @@
+import fs from "node:fs/promises";
+import path from "node:path";
 import { JSDOM } from "jsdom";
 
 const main = async (day) => {
@@ -5,6 +7,10 @@ const main = async (day) => {
 
   const dom = await fetch(url)
     .then((r) => r.text())
+    .then(async (t) => {
+      await fs.writeFile(path.join("raw", encodeURIComponent(url)), t);
+      return t;
+    })
     .then((t) => new JSDOM(t));
 
   const content = dom.window.document
@@ -86,10 +92,17 @@ const main = async (day) => {
         !block.startsWith("CLICK") &&
         !block.startsWith("NOTE: THE NEXT DAY")
       ) {
-        // This is a continuation of the previous block's content.
-        discussion.blocks[discussion.blocks.length - 1].content.push(
-          block.replace(/\n/g, " "),
-        );
+        if (discussion.blocks.length > 0) {
+          // This is a continuation of the previous block's content.
+          discussion.blocks[discussion.blocks.length - 1].content.push(
+            block.replace(/\n/g, " "),
+          );
+        } else {
+          discussion.blocks.push({
+            type: "paragraph",
+            content: [block.replace(/\n/g, "")],
+          });
+        }
       }
     }
   });

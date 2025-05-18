@@ -32,6 +32,12 @@ jobs:
           npm ci
           npm run build
 
+      - name: save build inputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: inputs
+          path: raw/*
+
       - name: upload artifacts to Pages
         uses: actions/upload-pages-artifact@v3
         with:

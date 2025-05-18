@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p docs && node src/main.js"
+    "build": "rm -rf raw && mkdir -p raw && mkdir -p docs && node src/main.js"
   },
   "author": "",
   "license": "ISC",
