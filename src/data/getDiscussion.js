@@ -92,16 +92,19 @@ const main = async (day) => {
         !block.startsWith("CLICK") &&
         !block.startsWith("NOTE: THE NEXT DAY")
       ) {
-        if (discussion.blocks.length > 0) {
-          // This is a continuation of the previous block's content.
-          discussion.blocks[discussion.blocks.length - 1].content.push(
-            block.replace(/\n/g, " "),
-          );
+        const content = block.replace(/\n/g, "");
+
+        if (discussion.blocks.length === 0) {
+          discussion.blocks.push({ type: "paragraph", content: [content] });
         } else {
-          discussion.blocks.push({
-            type: "paragraph",
-            content: [block.replace(/\n/g, "")],
-          });
+          const index = discussion.blocks.length - 1;
+          const parentType = discussion.blocks[index].type;
+
+          if (parentType === "block") {
+            discussion.blocks[index].content.push(content);
+          } else {
+            discussion.blocks.push({ type: "paragraph", content: [content] });
+          }
         }
       }
     }
