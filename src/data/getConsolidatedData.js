@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { days, getRisk } from "./metadata.js";
 import getDiscussion from "./getDiscussion.js";
 import path from "node:path";
+import fetch from "./fetch.js";
 
 const fixupTimestamp = (ts) => {
   const [, year, month, day, hour, minute] = ts.match(

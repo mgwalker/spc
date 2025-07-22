@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { JSDOM } from "jsdom";
+import fetch from "./fetch.js";
 
 const main = async (day) => {
   const url = `https://www.spc.noaa.gov/products/outlook/day${day}otlk.html`;
