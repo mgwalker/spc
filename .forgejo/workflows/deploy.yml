@@ -26,6 +26,9 @@ jobs:
           npm ci
           npm run build
 
-      - run: git checkout pages
-      - run: mv docs/* .
+      - name: move the built artifacts
+      - run: |
+          git fetch --unshallow origin pages
+          git checkout pages
+          mv docs/* .
 
