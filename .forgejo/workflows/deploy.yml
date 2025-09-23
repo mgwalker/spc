@@ -26,9 +26,6 @@ jobs:
           npm ci
           npm run build
 
-      - uses: actions/checkout@v5
-        with:
-          ref: pages
-
+      - run: git checkout pages
       - run: mv docs/* .
 
