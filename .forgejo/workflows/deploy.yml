@@ -33,11 +33,11 @@ jobs:
           mv docs/* .
 
       - name: check for changes
-        run: if git diff --exit-code --quiet; then echo "has_changes=no" >> $FORGEJO_OUTPUT; else echo "has_changes=yes" >> $FORGEJO_OUTPUT; fi
         id: diff
+        run: if git diff --exit-code --quiet; then echo "has_changes=no" >> $FORGEJO_OUTPUT; else echo "has_changes=yes" >> $FORGEJO_OUTPUT; fi
 
       - name: commit if changes
-        if: ${{ steps.diff.outputs.has_changes == "yes" }}
+        if: ${{ steps.diff.outputs.has_changes == 'yes' }}
         run: |
           git commit -am "update"
           git push
