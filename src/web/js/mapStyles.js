@@ -8,6 +8,36 @@ const thunderstormStyles = new Map([
   ["high risk", { color: "#FF7FFF", fillOpacity }],
 ]);
 
+const hatches = [
+  [
+    "intensity 1",
+    {
+      color: "black",
+      fillColor: "transparent",
+      fillOpacity,
+      className: "hatched-1",
+    },
+  ],
+  [
+    "intensity 2",
+    {
+      color: "black",
+      fillColor: "transparent",
+      fillOpacity,
+      className: "hatched-2",
+    },
+  ],
+  [
+    "intensity 3",
+    {
+      color: "black",
+      fillColor: "transparent",
+      fillOpacity,
+      className: "hatched-3",
+    },
+  ],
+];
+
 const tornadoStyles = new Map([
   ["2% risk", { color: "#008B00", fillOpacity }],
   ["5% risk", { color: "#8B4726", fillOpacity }],
@@ -16,7 +46,7 @@ const tornadoStyles = new Map([
   ["30% risk", { color: "#FF00FF", fillOpacity }],
   ["45% risk", { color: "#912CEE", fillOpacity }],
   ["60% risk", { color: "#104E8B", fillOpacity }],
-  ["significant", { color: "black", fillOpacity }],
+  ...hatches,
 ]);
 
 const windStyles = new Map([
@@ -25,7 +55,7 @@ const windStyles = new Map([
   ["30% risk", { color: "#FF0000", fillOpacity }],
   ["45% risk", { color: "#FF00FF", fillOpacity }],
   ["60% risk", { color: "#912CEE", fillOpacity }],
-  ["significant", { color: "black", fillOpacity }],
+  ...hatches,
 ]);
 
 const styles = new Map([
@@ -36,9 +66,5 @@ const styles = new Map([
 ]);
 
 export const getStyle = (type, risk) => {
-  const style = styles.get(type)?.get(risk);
-  if (style && risk === "significant") {
-    style.className = "hatched";
-  }
-  return style;
+  return styles.get(type)?.get(risk);
 };

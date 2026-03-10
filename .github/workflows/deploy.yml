@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
@@ -28,13 +30,12 @@ jobs:
 
       - name: move the built artifacts
         run: |
-          git fetch --unshallow origin pages
           git checkout pages
           mv docs/* .
 
       - name: check for changes
         id: diff
-        run: if git diff --exit-code --quiet; then echo "has_changes=no" >> $FORGEJO_OUTPUT; else echo "has_changes=yes" >> $FORGEJO_OUTPUT; fi
+        run: if git diff --exit-code --quiet; then echo "has_changes=no" >> $GITHUB_OUTPUT; else echo "has_changes=yes" >> $GITHUB_OUTPUT; fi
 
       - name: commit if changes
         if: ${{ steps.diff.outputs.has_changes == 'yes' }}

@@ -65,8 +65,14 @@ tab-controller {
       display: block;
       height: 80vh;
 
-      svg path.hatched {
-        fill: url(#hatched);
+      svg path.hatched-1 {
+        fill: url(#hatched-1);
+      }
+      svg path.hatched-2 {
+        fill: url(#hatched-2);
+      }
+      svg path.hatched-3 {
+        fill: url(#hatched-3);
       }
     }
   }
@@ -122,8 +128,14 @@ map-legend {
       border: 2px solid var(--legend-item-border-color);
       margin-right: 0.5rem;
 
-      &.hatched {
-        background: url(hatch.png);
+      &.hatched-1 {
+        background: url(hatch-1.png);
+      }
+      &.hatched-2 {
+        background: url(hatch-2.png);
+      }
+      &.hatched-3 {
+        background: url(hatch-3.png);
       }
     }
   }

@@ -46,8 +46,16 @@ const main = async () => {
   }
 
   await fs.copyFile(
-    path.join(import.meta.dirname, "hatch.png"),
-    "docs/hatch.png",
+    path.join(import.meta.dirname, "hatch-1.png"),
+    "docs/hatch-1.png",
+  );
+  await fs.copyFile(
+    path.join(import.meta.dirname, "hatch-2.png"),
+    "docs/hatch-2.png",
+  );
+  await fs.copyFile(
+    path.join(import.meta.dirname, "hatch-3.png"),
+    "docs/hatch-3.png",
   );
 
   await build({

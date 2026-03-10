@@ -34,7 +34,9 @@ const tornadoLabelMappings = new Map([
   ["0.30", "30% risk"],
   ["0.45", "45% risk"],
   ["0.60", "60% risk"],
-  ["SIGN", "significant"],
+  ["CIG1", "intensity 1"],
+  ["CIG2", "intensity 2"],
+  ["CIG3", "intensity 3"],
 ]);
 
 const windLabelMappings = new Map([
@@ -43,7 +45,9 @@ const windLabelMappings = new Map([
   ["0.30", "30% risk"],
   ["0.45", "45% risk"],
   ["0.60", "60% risk"],
-  ["SIGN", "significant"],
+  ["CIG1", "intensity 1"],
+  ["CIG2", "intensity 2"],
+  ["CIG3", "intensity 3"],
 ]);
 
 const labelMappings = new Map([
