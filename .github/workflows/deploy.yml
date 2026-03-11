@@ -8,6 +8,9 @@ on:
     # Run every hour
     - cron: "0 * * * *"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: build and deploy
