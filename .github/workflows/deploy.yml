@@ -9,7 +9,9 @@ on:
     - cron: "0 * * * *"
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -31,19 +33,10 @@ jobs:
           npm ci
           npm run build
 
-      - name: move the built artifacts
-        run: |
-          git checkout pages
-          mv docs/* .
+      - name: upload artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
 
-      - name: check for changes
-        id: diff
-        run: if git diff --exit-code --quiet; then echo "has_changes=no" >> $GITHUB_OUTPUT; else echo "has_changes=yes" >> $GITHUB_OUTPUT; fi
-
-      - name: commit if changes
-        if: ${{ steps.diff.outputs.has_changes == 'yes' }}
-        run: |
-          git config user.name "Automatic update"
-          git config user.email "git@greg.email"
-          git commit -am "update"
-          git push
+      - name: deploy
+        uses: actions/deploy-pages@v4
