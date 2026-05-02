@@ -1,8 +1,8 @@
 import fs from "node:fs/promises";
-import { days, getRisk } from "./metadata.js";
-import getDiscussion from "./getDiscussion.js";
 import path from "node:path";
 import fetch from "./fetch.js";
+import getDiscussion from "./getDiscussion.js";
+import { days, getRisk } from "./metadata.js";
 
 const fixupTimestamp = (ts) => {
   const [, year, month, day, hour, minute] = ts.match(
@@ -31,7 +31,7 @@ const main = async () => {
     dayNumber += 1;
 
     for await (const product of dayProducts) {
-      const url = `https://www.spc.noaa.gov/products/outlook/day${dayNumber}otlk_${product.key}.nolyr.geojson`;
+      const url = `https://www.spc.noaa.gov/products/outlook/day${dayNumber}otlk_${product.key}.lyr.geojson`;
 
       const productData = await fetch(url)
         .then((r) => r.json())
