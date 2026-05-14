@@ -31,7 +31,7 @@ const main = async () => {
     dayNumber += 1;
 
     for await (const product of dayProducts) {
-      const url = `https://www.spc.noaa.gov/products/outlook/day${dayNumber}otlk_${product.key}.lyr.geojson`;
+      const url = `https://www.spc.noaa.gov/products/outlook/day${dayNumber}otlk_${product.key}.nolyr.geojson`;
 
       const productData = await fetch(url)
         .then((r) => r.json())
