@@ -1,6 +1,6 @@
+import { JSDOM } from "jsdom";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { JSDOM } from "jsdom";
 import fetch from "./fetch.js";
 
 const main = async (day) => {
@@ -93,7 +93,7 @@ const main = async (day) => {
         !block.startsWith("CLICK") &&
         !block.startsWith("NOTE: THE NEXT DAY")
       ) {
-        const content = block.replace(/\n/g, "");
+        const content = block.replace(/\n/g, " ");
 
         if (discussion.blocks.length === 0) {
           discussion.blocks.push({ type: "paragraph", content: [content] });
